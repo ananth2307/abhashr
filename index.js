@@ -12,6 +12,8 @@ const watcher = chokidar.watch(filePath, {
   persistent: true,
 });
 
+const sql = require('./sql');
+
 let kpisPerCompanyPerMonth, companiesAndDepartments;
 
 const convertToCamelCase = (str) => {
@@ -21,6 +23,10 @@ const convertToCamelCase = (str) => {
       return match.toLowerCase();
   });
 };
+
+function removeSpecialChars(str) {
+  return str.replace(/[^\w\s]/gi, '');
+}
 
 const standardFormatData = (data) => data.map(obj => {
   const newObj = {};
@@ -57,9 +63,11 @@ watcher.on("change", (path) => {
   const workbook = xlsx.readFile(filePath);
   const sheet1Name = workbook.SheetNames[0];
   const sheet2Name = workbook.SheetNames[1];
+  const sheet3Name = workbook.SheetNames[2];
 
   const sheet1 = workbook.Sheets[sheet1Name];
   const sheet2 = workbook.Sheets[sheet2Name];
+  const sheet3 = workbook.Sheets[sheet3Name];
 
   kpisPerCompanyPerMonth = xlsx.utils.sheet_to_json(sheet2, {
     header: 0, // Use the second row as the header
@@ -67,7 +75,7 @@ watcher.on("change", (path) => {
     defval: "", // Use an empty string for empty cells
     raw: false, // Return formatted values
   });
-  companiesAndDepartments = xlsx.utils.sheet_to_json(sheet1, {
+  companiesAndDepartments = xlsx.utils.sheet_to_json(sheet3, {
     header: 0, // Use the second row as the header
     blankrows: false, // Exclude blank rows
     defval: "", // Use an empty string for empty cells
@@ -88,8 +96,8 @@ watcher.on("change", (path) => {
   //   const filteredData = output.filter((arr) => !lodash.isEmpty(arr));
   kpisPerCompanyPerMonth = standardFormatData(kpisPerCompanyPerMonth)
   companiesAndDepartments = standardFormatData(companiesAndDepartments)
-  console.log("------------------------Data from Sheet 1:", kpisPerCompanyPerMonth);
-  console.log("------------------------Data from Sheet 2:", companiesAndDepartments);
+  console.log(companiesAndDepartments);
+  sql(companiesAndDepartments, kpisPerCompanyPerMonth);
   // Write data to JSON file
   const kpisPerCompanyPerMonthJson = JSON.stringify(kpisPerCompanyPerMonth, null, 2);
   const companiesAndDepartmentsJson = JSON.stringify(companiesAndDepartments, null, 2);
@@ -113,13 +121,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 const port = 8023;
 
-const kpisPerCompanyPerMonthFile = require('./companiesAndDepartments.json');
-const companiesAndDepartmentsFile = require('./kpisPerCompanyPerMonth.json');
-
 app.get("/kpisPerCompanyPerMonth", (req, res) => {
+  const kpisPerCompanyPerMonthFile = require('./kpisPerCompanyPerMonth.json');
   res.send(kpisPerCompanyPerMonthFile);
 });
 app.get("/companiesAndDepartments", (req, res) => {
+  const companiesAndDepartmentsFile = require('./companiesAndDepartments.json');
   res.send(companiesAndDepartmentsFile);
 });
 
