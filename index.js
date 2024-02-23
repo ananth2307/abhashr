@@ -5,6 +5,7 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require('path');
 
 const filePath = "/Users/gmc-ananthprasad.n1/Documents/abashr/data.xlsx";
 
@@ -122,12 +123,29 @@ app.use(cors());
 const port = 8023;
 
 app.get("/kpisPerCompanyPerMonth", (req, res) => {
-  const kpisPerCompanyPerMonthFile = require('./kpisPerCompanyPerMonth.json');
-  res.send(kpisPerCompanyPerMonthFile);
+  const filePath = path.join(__dirname, 'kpisPerCompanyPerMonth.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  });
 });
+
 app.get("/companiesAndDepartments", (req, res) => {
-  const companiesAndDepartmentsFile = require('./companiesAndDepartments.json');
-  res.send(companiesAndDepartmentsFile);
+  const filePath = path.join(__dirname, 'companiesAndDepartments.json');
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  });
 });
 
 app.listen(port, () => {
