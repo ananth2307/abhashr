@@ -1,9 +1,6 @@
 [
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "Comm - Commercial",
-    "numberEmployees": "3",
+    "numberEmployees": "10",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
     "avg.CostsPerHour": "-",
@@ -22,9 +19,6 @@
     "totalAbsenceDays": "10.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "F&CS - Finance & Corporate Services",
     "numberEmployees": "35",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -44,9 +38,6 @@
     "totalAbsenceDays": "128.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "HR & OD",
     "numberEmployees": "8",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -66,9 +57,6 @@
     "totalAbsenceDays": "17.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "MD and MD Support",
     "numberEmployees": "7",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -88,9 +76,6 @@
     "totalAbsenceDays": "4.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "OPS - Operations",
     "numberEmployees": "71",
     "overtime(hrs)": "1,075.89",
     "overtimeCosts": "32,551.63",
@@ -110,9 +95,6 @@
     "totalAbsenceDays": "190.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "S&RM - Strategy & Risk Management",
     "numberEmployees": "7",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -132,9 +114,6 @@
     "totalAbsenceDays": "30.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Gas (Curgas) N.V.",
-    "department": "OPS - Operations",
     "numberEmployees": "48",
     "overtime(hrs)": "1,005.25",
     "overtimeCosts": "31,532.64",
@@ -154,9 +133,6 @@
     "totalAbsenceDays": "155.00"
   },
   {
-    "month": "9",
-    "company": "Curaçao Gas (Curgas) N.V.",
-    "department": "Comm - Commercial",
     "numberEmployees": "13",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -176,9 +152,6 @@
     "totalAbsenceDays": "31.00"
   },
   {
-    "month": "9",
-    "company": "Curoil Gasstation N.V.",
-    "department": "Comm - Commercial",
     "numberEmployees": "11",
     "overtime(hrs)": "23.00",
     "overtimeCosts": "484.14",
@@ -198,9 +171,6 @@
     "totalAbsenceDays": "20.00"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON - Bonaire",
     "numberEmployees": "1",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -220,9 +190,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON - Head Bonaire & International Distr. Services",
     "numberEmployees": "1",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -242,9 +209,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/A - Aviation Bonaire",
     "numberEmployees": "9",
     "overtime(hrs)": "395.00",
     "overtimeCosts": "12,547.97",
@@ -264,9 +228,6 @@
     "totalAbsenceDays": "53.00"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/A - Aviation Supervisor Bonaire",
     "numberEmployees": "1",
     "overtime(hrs)": "9.00",
     "overtimeCosts": "512.30",
@@ -286,9 +247,6 @@
     "totalAbsenceDays": "10.00"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/D - Depot",
     "numberEmployees": "0",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -308,9 +266,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/D - Gas PLant & Distributions Services",
     "numberEmployees": "1",
     "overtime(hrs)": "13.50",
     "overtimeCosts": "985.82",
@@ -330,9 +285,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/D - Gasoline & Gasoil Distribution",
     "numberEmployees": "5",
     "overtime(hrs)": "251.50",
     "overtimeCosts": "6,585.30",
@@ -352,9 +304,6 @@
     "totalAbsenceDays": "25.00"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/D - LPG Distribution",
     "numberEmployees": "4",
     "overtime(hrs)": "47.00",
     "overtimeCosts": "1,092.22",
@@ -374,9 +323,6 @@
     "totalAbsenceDays": "13.00"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/M - Domestic Sales",
     "numberEmployees": "1",
     "overtime(hrs)": "30.00",
     "overtimeCosts": "652.17",
@@ -396,9 +342,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/M - Domestic Sales Support",
     "numberEmployees": "0",
     "overtime(hrs)": "-",
     "overtimeCosts": "-",
@@ -418,9 +361,6 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "9",
-    "company": "Curoil (Bonaire) N.V.",
-    "department": "BON/M - Gasstation",
     "numberEmployees": "3",
     "overtime(hrs)": "7.50",
     "overtimeCosts": "95.73",
@@ -440,10 +380,7 @@
     "totalAbsenceDays": "-"
   },
   {
-    "month": "Totaal",
-    "company": "Curaçao Oil (Curoil) N.V.",
-    "department": "F&CS - Finance & Corporate Services",
-    "numberEmployees": "229",
+    "numberEmployees": "236",
     "overtime(hrs)": "2,857.64",
     "overtimeCosts": "87,039.93",
     "avg.CostsPerHour": "328.31",

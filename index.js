@@ -15,7 +15,7 @@ const watcher = chokidar.watch(filePath, {
 
 const sql = require('./sql');
 
-let kpisPerCompanyPerMonth, companiesAndDepartments;
+let mainChart, drillDownChart;
 
 const convertToCamelCase = (str) => {
   return str.replace(/\s(.)/g, function (match) {
@@ -40,43 +40,24 @@ const standardFormatData = (data) => data.map(obj => {
 
 watcher.on("change", (path) => {
   console.log(`File ${path} has been changed`);
-  //   const objKey = [
-  //     "company",
-  //     "department",
-  //     "numberEmployees",
-  //     "overtimeHours",
-  //     "overtimeCosts",
-  //     "avgOvertimeCostsPerHour",
-  //     "avgOvertimeHoursPerEmployee",
-  //     "avgOvertimeDaysPerEmployee",
-  //     "avgOvertimeCostsPerEmployee",
-  //     "overtimeDays",
-  //     "leaveDays",
-  //     "leaveCosts",
-  //     "avgLeaveDaysPerEmployee",
-  //     "avgLeaveCostsPerEmployee",
-  //     "sicknessDays",
-  //     "sicknessCosts",
-  //     "avgSicknessDaysPerEmployee",
-  //     "avgSicknessCostsPerEmployee",
-  //   ];
 
   const workbook = xlsx.readFile(filePath);
   const sheet1Name = workbook.SheetNames[0];
   const sheet2Name = workbook.SheetNames[1];
-  const sheet3Name = workbook.SheetNames[2];
 
   const sheet1 = workbook.Sheets[sheet1Name];
   const sheet2 = workbook.Sheets[sheet2Name];
-  const sheet3 = workbook.Sheets[sheet3Name];
 
-  kpisPerCompanyPerMonth = xlsx.utils.sheet_to_json(sheet2, {
+  mainChart = xlsx.utils.sheet_to_json(sheet1, {
     header: 0, // Use the second row as the header
     blankrows: false, // Exclude blank rows
     defval: "", // Use an empty string for empty cells
     raw: false, // Return formatted values
   });
-  companiesAndDepartments = xlsx.utils.sheet_to_json(sheet3, {
+  console.log("----------------------------",mainChart)
+  console.log("----------------------------")
+
+  drillDownChart = xlsx.utils.sheet_to_json(sheet2, {
     header: 0, // Use the second row as the header
     blankrows: false, // Exclude blank rows
     defval: "", // Use an empty string for empty cells
@@ -95,15 +76,15 @@ watcher.on("change", (path) => {
   //     }
   //   });
   //   const filteredData = output.filter((arr) => !lodash.isEmpty(arr));
-  kpisPerCompanyPerMonth = standardFormatData(kpisPerCompanyPerMonth)
-  companiesAndDepartments = standardFormatData(companiesAndDepartments)
-  console.log(companiesAndDepartments);
-  sql(companiesAndDepartments, kpisPerCompanyPerMonth);
+  mainChart = standardFormatData(mainChart)
+  drillDownChart = standardFormatData(drillDownChart)
+  // console.log(mainChart);
+  // sql(drillDownChart, mainChart);
   // Write data to JSON file
-  const kpisPerCompanyPerMonthJson = JSON.stringify(kpisPerCompanyPerMonth, null, 2);
-  const companiesAndDepartmentsJson = JSON.stringify(companiesAndDepartments, null, 2);
-  fs.writeFileSync('kpisPerCompanyPerMonth.json', kpisPerCompanyPerMonthJson);
-  fs.writeFileSync('companiesAndDepartments.json', companiesAndDepartmentsJson);
+  const mainChartJson = JSON.stringify(mainChart, null, 2);
+  const drillDownChartJson = JSON.stringify(drillDownChart, null, 2);
+  fs.writeFileSync('mainChart.json', mainChartJson);
+  fs.writeFileSync('drillDownChart.json', drillDownChartJson);
 });
 
 watcher.on("error", (error) => {
@@ -122,8 +103,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 const port = 8023;
 
-app.get("/kpisPerCompanyPerMonth", (req, res) => {
-  const filePath = path.join(__dirname, 'kpisPerCompanyPerMonth.json');
+app.get("/mainChart", (req, res) => {
+  const filePath = path.join(__dirname, 'mainChart.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -135,8 +116,8 @@ app.get("/kpisPerCompanyPerMonth", (req, res) => {
   });
 });
 
-app.get("/companiesAndDepartments", (req, res) => {
-  const filePath = path.join(__dirname, 'companiesAndDepartments.json');
+app.get("/drillDownChart", (req, res) => {
+  const filePath = path.join(__dirname, 'drillDownChart.json');
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
